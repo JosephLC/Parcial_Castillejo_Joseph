@@ -8,7 +8,7 @@ public class Requisito {
     public Requisito(int orden, String descripcion) {
         this.orden = orden;
         this.descripcion = descripcion;
-        this.estado = true;
+        this.estado = true; // Por defecto, habilitado
     }
 
     public void habilitar() {
@@ -21,10 +21,6 @@ public class Requisito {
 
     public int getOrden() {
         return orden;
-    }
-
-    public void setOrden(int orden) {
-        this.orden = orden;
     }
 
     public String getDescripcion() {
@@ -42,6 +38,6 @@ public class Requisito {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
 
+   
 }

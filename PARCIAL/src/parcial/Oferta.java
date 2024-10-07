@@ -2,16 +2,17 @@ package parcial;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Oferta {
+    private String puesto;
     private String descripcion;
     private String area;
     private Date fechaInicio;
     private Date fechaTermino;
-    private List<Requisito> requisitos;
+    private ArrayList<Requisito> requisitos;
 
-    public Oferta(String descripcion, String area, Date fechaInicio, Date fechaTermino) {
+    public Oferta(String puesto, String descripcion, String area, Date fechaInicio, Date fechaTermino) {
+        this.puesto = puesto;
         this.descripcion = descripcion;
         this.area = area;
         this.fechaInicio = fechaInicio;
@@ -19,15 +20,21 @@ public class Oferta {
         this.requisitos = new ArrayList<>();
     }
 
-    public boolean agregarRequisito(Requisito requisito) {
-        return requisitos.add(requisito);
+    public boolean agregarRequisito(int orden, String descripcion) {
+        return requisitos.add(new Requisito(orden, descripcion));
     }
 
-    public boolean eliminarRequisito(Requisito requisito) {
-        return requisitos.remove(requisito);
+    public boolean eliminarRequisito(int orden) {
+        return requisitos.removeIf(r -> r.getOrden() == orden);
     }
 
-    // Getters y Setters
+    public String getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
+    }
 
     public String getDescripcion() {
         return descripcion;
@@ -61,13 +68,14 @@ public class Oferta {
         this.fechaTermino = fechaTermino;
     }
 
-    public List<Requisito> getRequisitos() {
+    public ArrayList<Requisito> getRequisitos() {
         return requisitos;
     }
 
-    public void setRequisitos(List<Requisito> requisitos) {
+    public void setRequisitos(ArrayList<Requisito> requisitos) {
         this.requisitos = requisitos;
     }
+
     
 }
 

@@ -44,6 +44,6 @@ public class Contacto {
     public void setPuesto(String puesto) {
         this.puesto = puesto;
     }
-    
 
+    
 }

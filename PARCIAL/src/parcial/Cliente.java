@@ -1,7 +1,6 @@
 package parcial;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Cliente {
     private String RUC;
@@ -9,8 +8,8 @@ public class Cliente {
     private String email;
     private String telefono;
     private String clave;
-    private Contacto contacto;
-    private final List<Oferta> ofertas;
+    private final ArrayList<Oferta> ofertas;
+    private ArrayList<Contacto> contactos;
 
     public Cliente(String RUC, String nombre, String email, String telefono, String clave) {
         this.RUC = RUC;
@@ -19,10 +18,7 @@ public class Cliente {
         this.telefono = telefono;
         this.clave = clave;
         this.ofertas = new ArrayList<>();
-    }
-
-    public void registrarContacto(Contacto contacto) {
-        this.contacto = contacto;
+        this.contactos = new ArrayList<>();
     }
 
     public boolean agregarOferta(Oferta oferta) {
@@ -33,8 +29,12 @@ public class Cliente {
         return ofertas.remove(oferta);
     }
 
-    public List<Oferta> getOfertas() {
+    public ArrayList<Oferta> getOfertas() {
         return ofertas;
+    }
+
+    public boolean registrarContacto(String DNI, String nombres, String apellidos, String puesto) {
+        return contactos.add(new Contacto(DNI, nombres, apellidos, puesto));
     }
 
     public String getRUC() {
@@ -77,12 +77,13 @@ public class Cliente {
         this.clave = clave;
     }
 
-    public Contacto getContacto() {
-        return contacto;
+    public ArrayList<Contacto> getContactos() {
+        return contactos;
     }
 
-    public void setContacto(Contacto contacto) {
-        this.contacto = contacto;
+    public void setContactos(ArrayList<Contacto> contactos) {
+        this.contactos = contactos;
     }
+
     
 }
